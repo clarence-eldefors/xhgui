@@ -51,6 +51,10 @@ class Xhgui_Db_Mapper
         if (isset($search['simple_url'])) {
             $conditions['meta.simple_url'] = (string)$search['simple_url'];
         }
+	if (isset($search['host'])) {
+            $conditions['meta.host'] = (string)$search['host'];
+        }
+
         if (isset($search['url'])) {
             // Not sure if letting people use regex here
             // is a good idea. Only one way to find out.

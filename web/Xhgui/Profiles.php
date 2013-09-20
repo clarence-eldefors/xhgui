@@ -46,6 +46,20 @@ class Xhgui_Profiles
         return $this->paginate($options);
     }
 
+    public function getForHost($host, $options, $conditions = array())
+    {
+        $conditions = array_merge(
+            (array) $conditions,
+            array('host' => $host)
+        );
+        $options = array_merge($options, array(
+            'conditions' => $conditions,
+        ));
+        return $this->paginate($options);
+    }
+
+
+
     public function paginate($options)
     {
         $opts = $this->_mapper->convert($options);
@@ -86,7 +100,16 @@ class Xhgui_Profiles
      */
     public function getAvgsForUrl($url, $search = array())
     {
-        $match = array('meta.simple_url' => $url);
+        return $this->getAvgsForField('simple_url', $url);
+    }
+
+   public function getAvgsForHost($host, $search = array()) {
+	return $this->getAvgsForField('host', $host);
+   }
+
+   public function getAvgsForField ($field, $value, $search = array()) 
+   {
+	$match = array('meta.' . $field  => $value);
         if (isset($search['date_start'])) {
             $match['meta.request_date']['$gte'] = (string)$search['date_start'];
         }
@@ -120,7 +143,8 @@ class Xhgui_Profiles
             unset($results['result'][$i]['_id']);
         }
         return $results['result'];
-    }
+	
+   }
 
     /**
      * Get a paginated set of results.

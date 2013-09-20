@@ -162,6 +162,8 @@ thead .sort-link:hover {
 }
 
 
+td { max-width:750px; overflow:hidden }
+
 th.right,
 td.right {
     text-align: right;
