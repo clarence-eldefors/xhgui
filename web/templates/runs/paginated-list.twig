@@ -7,17 +7,18 @@
                 {% if show_compare_link %}
                 <th>&nbsp;</th>
                 {% endif %}
+                <th>Host</th>
                 <th>URL</th>
                 <th>
                     {{ helpers.sort_link('Time', base_url, 'time', paging, search) }}
                 </th>
                 <th class="right">
-                    <span class="tip" title="Wall time">
+                    <span title="Wall time">
                         {{ helpers.sort_link('wt', base_url, 'wt', paging, search) }}
                     </span>
                 </th>
                 <th class="right">
-                    <span class="tip" title="CPU time">
+                    <span title="CPU time">
                         {{ helpers.sort_link('cpu', base_url, 'cpu', paging, search) }}
                     </span>
                 </th>
@@ -27,7 +28,7 @@
                     </span>
                 </th>
                 <th class="right">
-                    <span class="tip" title="Peak Memory">
+                    <span title="Peak Memory">
                         {{ helpers.sort_link('pmu', base_url, 'pmu', paging, search) }}
                     </span>
                 </th>
@@ -43,6 +44,7 @@
                 </a>
             </td>
             {% endif %}
+            <td><a href="{{ url('/host.php', {'host': result.meta.host }) }}">{{ result.meta.host }}</a></td>
             <td><a href="{{ url('/url.php', {'url': result.meta.url}) }}">{{ result.meta.url }}</a></td>
             <td><a href="{{ url('/run.php', {'id': result.id|trim }) }}">{{ result.meta.SERVER.REQUEST_TIME|date(date_format) }}</a></td>
             <td class="right">{{ result.get('main()', 'wt') |as_time }}</td>
