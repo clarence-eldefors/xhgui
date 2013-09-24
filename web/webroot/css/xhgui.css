@@ -169,7 +169,7 @@ thead .sort-link:hover {
 }
 
 
-td { max-width:750px; overflow:hidden }
+td { max-width:750px; overflow:hidden; word-break: break-word; word-break: break-all }
 
 th.right,
 td.right {
