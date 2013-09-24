@@ -13,7 +13,7 @@ $pagination = array(
 );
 
 $search = array();
-$keys = array('date_start', 'date_end');
+$keys = array('date_start', 'date_end', 'url');
 foreach ($keys as $key) {
     $search[$key] = !empty($_GET[$key]) ? $_GET[$key] : null;
 }
@@ -35,5 +35,5 @@ echo $template->render(array(
     'host' => $_GET['host'],
     'chart_data' => $chartData,
     'date_format' => Xhgui_Config::read('date.format'),
-    'search' => array_merge($search, array('url' => $_GET['url'])),
+    'search' => array_merge($search, array('host' => $_GET['host'])),
 ));

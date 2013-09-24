@@ -19,13 +19,19 @@
     </a>
 
     <form action="{{ url('/url.php') }}" method="get" class="row hide search-form form-inline">
+     <input type="hidden" name="host" value="{{ search.host }}" />
         <input type="hidden" name="url" value="{{ search.url }}" />
-        <a href="#" class="search-collapse close" title="Hide search form">&times;</a>
         <div class="control-group span4">
             <label class="control-label" for="start_date">Date range</label>
             <div class="controls">
                 <input type="text" data-date-format="yyyy-mm-dd" id="date_start" name="date_start" class="datepicker span2" value="{{ search.date_start }}">
                 <input type="text" id="date_end" data-date-format="yyyy-mm-dd" name="date_end" class="datepicker span2" value="{{ search.date_end }}">
+            </div>
+        </div>
+        <div class="control-group span3">
+            <label class="control-label" for="host">Host</label>
+            <div class="controls">
+                <input type="text" id="host" name="host" value="{{ search.host }}">
             </div>
         </div>
         <div class="form-actions">

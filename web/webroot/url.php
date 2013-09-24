@@ -13,7 +13,7 @@ $pagination = array(
 );
 
 $search = array();
-$keys = array('date_start', 'date_end');
+$keys = array('date_start', 'date_end', 'host');
 foreach ($keys as $key) {
     $search[$key] = !empty($_GET[$key]) ? $_GET[$key] : null;
 }

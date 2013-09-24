@@ -37,7 +37,7 @@ class Xhgui_Profiles
     public function getForUrl($url, $options, $conditions = array())
     {
         $conditions = array_merge(
-            (array)$conditions,
+            (array) $conditions,
             array('simple_url' => $url)
         );
         $options = array_merge($options, array(
@@ -100,22 +100,30 @@ class Xhgui_Profiles
      */
     public function getAvgsForUrl($url, $search = array())
     {
-        return $this->getAvgsForField('simple_url', $url);
+        return $this->getAvgsForField('simple_url', $url, $search);
     }
 
-   public function getAvgsForHost($host, $search = array()) {
-	return $this->getAvgsForField('host', $host);
-   }
+    public function getAvgsForHost($host, $search = array())
+    {
+        return $this->getAvgsForField('host', $host, $search);
+    }
 
-   public function getAvgsForField ($field, $value, $search = array()) 
-   {
-	$match = array('meta.' . $field  => $value);
+    public function getAvgsForField ($field, $value, $search = array()) 
+    {
+        $match = array('meta.' . $field  => $value);
         if (isset($search['date_start'])) {
-            $match['meta.request_date']['$gte'] = (string)$search['date_start'];
+            $match['meta.request_date']['$gte'] = (string) $search['date_start'];
         }
         if (isset($search['date_end'])) {
-            $match['meta.request_date']['$lte'] = (string)$search['date_end'];
+            $match['meta.request_date']['$lte'] = (string) $search['date_end'];
         }
+        if (isset($search['url'])) {
+            $match['meta.url']['$regex'] = (string) $search['url'];
+        }
+        if (isset($search['host'])) {
+            $match['meta.host']['$regex'] = (string) $search['host'];
+        }
+
         $results = $this->_collection->aggregate(array(
             array('$match' => $match),
             array(
@@ -135,6 +143,7 @@ class Xhgui_Profiles
             ),
             array('$sort' => array('_id' => 1))
         ));
+
         if (empty($results['result'])) {
             return array();
         }
@@ -142,8 +151,10 @@ class Xhgui_Profiles
             $results['result'][$i]['date'] = $result['_id'];
             unset($results['result'][$i]['_id']);
         }
+
+
+
         return $results['result'];
-	
    }
 
     /**

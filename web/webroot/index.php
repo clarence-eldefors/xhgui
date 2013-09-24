@@ -5,7 +5,7 @@ $db = Xhgui_Db::connect();
 $profiles = new Xhgui_Profiles($db->results);
 
 $search = array();
-$keys = array('date_start', 'date_end', 'url');
+$keys = array('date_start', 'date_end', 'url', 'host');
 foreach ($keys as $key) {
     $search[$key] = !empty($_GET[$key]) ? $_GET[$key] : null;
 }

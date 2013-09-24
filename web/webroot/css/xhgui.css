@@ -32,6 +32,8 @@
  */
 h1, h2, h3 {
     margin: 15px 0;
+    word-break: break-word;
+    word-break: break-all;
 }
 h1, h2, h3, h4, h5, h6,
 .nav-header,
@@ -78,6 +80,9 @@ h1, h2, h3, h4, h5, h6,
  */
 .sidebar-nav {
     border-right: 1px solid rgb(221, 221, 221);
+    max-height: 800px;
+    overflow-y: scroll;
+    margin-bottom:30px;
 }
 .nav-list dl {
     margin: 0;
@@ -86,6 +91,8 @@ h1, h2, h3, h4, h5, h6,
     display: inline;
     padding: 0;
     margin: 0;
+    word-break: break-word;
+    word-break: break-all;
 }
 .sidebar-nav li a:hover {
     background: transparent;
