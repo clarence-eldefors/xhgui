@@ -1,6 +1,5 @@
 <?php
 require dirname(__DIR__) . '/bootstrap.php';
-Xhgui_Login::checkLogin();
 if (isset($_POST['login']) && $_POST['login'] == Xhgui_Config::read('login') && 
     $_POST['password'] == Xhgui_Config::read('password')) {
     session_start();
