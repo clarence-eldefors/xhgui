@@ -1,6 +1,6 @@
 <?php
 require dirname(__DIR__) . '/bootstrap.php';
-
+Xhgui_Login::checkLogin();
 $db = Xhgui_Db::connect();
 $profiles = new Xhgui_Profiles($db->results);
 

@@ -1,6 +1,6 @@
 <?php
 require dirname(__DIR__) . '/bootstrap.php';
-
+Xhgui_Login::checkLogin();
 $db = Xhgui_Db::connect();
 $detailCount = Xhgui_Config::read('detail.count');
 

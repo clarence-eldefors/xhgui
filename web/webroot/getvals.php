@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+Xhgui_Login::checkLogin();
 require dirname(__DIR__) . '/bootstrap.php';
 $m = new Mongo();
 $db = $m->xhprof;

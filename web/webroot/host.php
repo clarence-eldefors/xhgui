@@ -1,5 +1,6 @@
 <?php
 require dirname(__DIR__) . '/bootstrap.php';
+Xhgui_Login::checkLogin();
 $perPage = Xhgui_Config::read('page.limit');
 
 $db = Xhgui_Db::connect();

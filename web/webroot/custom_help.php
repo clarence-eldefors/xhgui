@@ -1,5 +1,6 @@
 <?php
 require dirname(__DIR__) . '/bootstrap.php';
+Xhgui_Login::checkLogin();
 $template = Xhgui_Template::load('runs/custom_help.twig');
 $m = new Mongo();
 $db = $m->xhprof;

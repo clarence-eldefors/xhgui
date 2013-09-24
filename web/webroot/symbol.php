@@ -1,6 +1,6 @@
 <?php
 require dirname(__DIR__) . '/bootstrap.php';
-
+Xhgui_Login::checkLogin();
 $id = $_GET['id'];
 $symbol = $_GET['symbol'];
 
