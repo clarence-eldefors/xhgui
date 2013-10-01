@@ -118,10 +118,10 @@ class Xhgui_Profiles
             $match['meta.request_date']['$lte'] = (string) $search['date_end'];
         }
         if (isset($search['url'])) {
-            $match['meta.url']['$regex'] = (string) $search['url'];
+            $match['meta.url'] = (string) $search['url'];
         }
         if (isset($search['host'])) {
-            $match['meta.host']['$regex'] = (string) $search['host'];
+            $match['meta.host'] = (string) $search['host'];
         }
 
         $results = $this->_collection->aggregate(array(
