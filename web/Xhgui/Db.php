@@ -25,6 +25,7 @@ class Xhgui_Db
         }
         self::$_mongo = new MongoClient($host);
         self::$_db = self::$_mongo->{$db};
+        MongoCursor::$timeout = 120000;
         return self::$_db;
     }
 
